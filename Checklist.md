@@ -43,15 +43,26 @@ The repository contains `css`, `images`, and `js` folders, as well as an `index.
 Great! You have the starter code. But before moving on, make sure you are comfortable with the content from [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud711). Ask yourself:
 
 * What is an **object**?
-> A primitive can be replaced, but it can't be directly altered.
+> A primitive can be replaced, but it can't be directly altered (it can be copied and placed into a function to be altered). An object can be altered directly.
 
   * How is an object different from a **primitive** in JavaScript (e.g., can a primitive have methods?)
+  > See above.
   * What are some ways to create or instantiate a new object?
+  > You can create an object using an object initializer. An object initializer is a comma-delimited list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}). example:
+  > An empty object with no properties can be created like this:
+  > ```var object = {};```
+  > Alternatively, you can first create a constructor function and then instantiate an object invoking that function in conjunction with the new operator.
+  > https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Creating_new_objects
   * How do you modify **properties**, or add/remove properties from an object?
+  >
 * What is a **constructor function** (or class)?
+>
 * What is `this`? What does it refer to and how is it used in different contexts (i.e., in a constructor function, a **method**, etc.)?
+>
 * How do you add a property or method to a constructor's prototype?
+>
 * What is **prototypal inheritance** and how is it implemented?
+>
 
 ## Development Strategy
 Inside the `app.js` file, you will need to implement the `Player` and the `Enemy` classes, using [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud711). Be sure to review *all* code comments written in `app.js`. Part of the code for the `Enemy` is provided to you, and you will need to complete the following:
