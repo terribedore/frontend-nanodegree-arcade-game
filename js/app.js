@@ -56,6 +56,32 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// player movement via key presses.
+Player.prototype.handleInput = function(keyPress) {
+    // player moves left 1 tile (102 px) for each 'left' key press.
+    // the && Operator keeps the player on the canvas.
+    if(keyPress == 'left' && this.x > 0) {
+      this.x -= 102;
+    };
+
+    // player moves up 1 tile (83 px) for each 'up' key press.
+    // the && Operator keeps the player on the canvas.
+    if(keyPress == 'up' && this.y > 0) {
+      this.y -= 83;
+    };
+    // player moves right 1 tile (102 px) for each 'right' key press.
+    // the && Operator keeps the player on the canvas.
+    if(keyPress == 'right' && this.x < 405) {
+      this.x += 102;
+    };
+
+    // player moves down 1 tile (102 px) for each 'down' key press.
+    // the && Operator keeps the player on the canvas.
+    // You'd think the && Operator is 405, but you'd be wrong!
+    if(keyPress == 'down' && this.y < 388) {
+      this.y += 83;
+    };
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
