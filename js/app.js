@@ -96,36 +96,12 @@ Player.prototype.handleInput = function(keyPress) {
     };
 };
 
-// TODO: set this to call ONLY upon win!
-var winTile = function() {
-    // The image/sprite for our row of stars, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/Selector.png';
-
-    // starting position
-    this.x = 404; // should start WAY off screen then render as a row at 0, 101, 202, 303, 404
-    this.y = -40; // should start WAY off screen then render as a row at -40
-};
-
-// Update the row of stars' position, required method for game
-// Parameter: dt, a time delta between ticks
-winTile.prototype.update = function(dt) {
-    // These don't move
-};
-
-// Draw the row of stars on the screen, required method for game
-winTile.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(-115, 60), new Enemy(-220, 145), new Enemy(-325, 230)];
 
 var player = new Player();
-
-var starRow = [new winTile(0, -40), new winTile(101, -40), new winTile(202, -40), new winTile(303, -40), new winTile(404, -40)];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
