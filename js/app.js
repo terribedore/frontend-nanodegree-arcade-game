@@ -1,14 +1,11 @@
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
+    // The image/sprite for our enemies, 'this' uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
-    // starting position. A negative starting number at 'x' allows them to creep on the screen vs. teleporting!
-    // NOTE: Canvas is 505 x 606 px. Blocks are 101 x 171 px.
+    // starting position. A negative starting number at
+    // 'x' allows them to creep on the screen vs. teleporting!
     this.x = -100;
     this.y = 60;
 };
