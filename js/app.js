@@ -39,9 +39,8 @@ var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
 
     // starting position
-    // NOTE: Canvas is 505 x 606 px. Blocks are 101 x 171 px.
-    this.x = 100;
-    this.y = 100;
+    this.x = 200;
+    this.y = 390;
 };
 
 // Update the player's position, required method for game
