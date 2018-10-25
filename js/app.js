@@ -81,7 +81,17 @@ Player.prototype.handleInput = function(keyPress) {
     if(keyPress == 'down' && this.y < 388) {
       this.y += 83;
     };
+
+    // if player wins / reaches water row without collision,
+    // player is sent back to starting position after t seconds
+    if(this.y < 0) {
+      setTimeout(() => {
+        this.x = 202;
+        this.y = 388;
+      }, 500); // 500 = miliseconds = 0.5 seconds
+    };
 };
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
