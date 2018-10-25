@@ -103,7 +103,7 @@ var allEnemies = [new Enemy(-115, 60), new Enemy(-220, 145), new Enemy(-325, 230
 
 var player = new Player();
 
-
+// // TODO: place win object in variable called 'star'
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
