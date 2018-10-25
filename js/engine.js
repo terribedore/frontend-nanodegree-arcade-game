@@ -73,7 +73,7 @@ var Engine = (function(global) {
      * you implement your collision detection (when two entities occupy the
      * same space, for instance when your character should die), you may find
      * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
+     * it commented out - // NB: you may or may not want to implement this
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
@@ -160,6 +160,7 @@ var Engine = (function(global) {
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
+     // OPTIMIZE: : Future Refectoring Opp!
     function reset() {
         // noop
     }
