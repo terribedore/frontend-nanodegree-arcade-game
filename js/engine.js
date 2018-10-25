@@ -154,6 +154,10 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+        starRow.forEach(function(star) {
+            star.render();
+        });
     }
 
     /* This function does nothing but it could have been a good place to
