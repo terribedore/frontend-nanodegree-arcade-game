@@ -1,13 +1,13 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // The image/sprite for our enemies, 'this' uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
     // starting position. A negative starting number at
     // 'x' allows them to creep on the screen vs. teleporting!
-    this.x = -100;
-    this.y = 60;
+    this.x = -115;
+    this.y = 60;  //NB: next bug at 145, 230
 };
 
 // Update the enemy's position, required method for game
