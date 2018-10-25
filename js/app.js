@@ -16,9 +16,9 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += 0.5; // speed.
+    this.x += 0.5; // rate of speed. 0.5 is a slower speed for testing.
     if (this.x > 500) {
-     this.x = 0;
+     this.x = -100; // a negative number simulates a creep vs teleporting movement.
    }
 };
 
