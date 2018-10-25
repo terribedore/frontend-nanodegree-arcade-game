@@ -155,7 +155,7 @@ var Engine = (function(global) {
 
         player.render();
 
-        starRow.forEach(function(star) {
+        starRow.forEach(function(winTile) {
             star.render();
         });
     }
