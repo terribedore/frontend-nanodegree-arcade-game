@@ -85,6 +85,10 @@ Player.prototype.handleInput = function(keyPress) {
     // if player wins / reaches water row without collision,
     // player is sent back to starting position after t seconds
     if(this.y < 0) {
+      // OPTIMIZE: disable 'keyPress' in future refactoring so
+      // player can't be moved after winning. (short timout for now)
+      // IDEA: add a 'win' and 'gotcha' function. use if/else to
+      // trigger win = star and reset while gotcha = rock and reset.
       setTimeout(() => {
         this.x = 202;
         this.y = 388;
