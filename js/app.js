@@ -6,8 +6,8 @@ var Enemy = function(x, y) {
 
     // starting position. A negative starting number at
     // 'x' allows them to creep on the screen vs. teleporting!
-    this.x = -115;
-    this.y = 60;  //NB: next bug at 145, 230
+    this.x = x; // NB: bugs, first to last appearance: -115, -220, -270.
+    this.y = y;  // NB: bugs, bottom to top: 230, 145, 60.
 };
 
 // Update the enemy's position, required method for game
