@@ -18,7 +18,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += 0.5; // rate of speed. 0.5 is a slower speed for testing.
     if (this.x > 500) {
-     this.x = -100; // a negative number simulates a creep vs teleporting movement.
+     this.x = -115; // a negative number simulates a creep vs teleporting movement.
    }
 };
 
