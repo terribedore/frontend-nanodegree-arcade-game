@@ -39,8 +39,8 @@ var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
 
     // starting position
-    this.x = 200;
-    this.y = 390;
+    this.x = 202;
+    this.y = 388;
 };
 
 // Update the player's position, required method for game
