@@ -72,7 +72,7 @@ You can add your own `Enemy` methods as needed. You will also need to implement 
 * The `handleInput` method, which should receive user input, `allowedKeys` (the key which was pressed) and move the player according to that input. In particular:
   * Left key should move the player to the left, right key to the right, up should move the player up and down should move the player down
   * Recall that the player cannot move off screen (so you will need to check for that and handle appropriately)
-  * If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset `Player` method to handle that)
+* If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset `Player` method to handle that)
 
 You can add your own `Player` methods as needed as well. Once you have completed implementing the `Player` and `Enemy`, you should instantiate them by:
 
