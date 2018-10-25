@@ -6,6 +6,11 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+
+    // starting position
+    // NOTE: Canvas is 505 x 606 px. Blocks are 101 x 171 px.
+    this.x = 0;
+    this.y = 0;
 };
 
 // Update the enemy's position, required method for game
@@ -30,7 +35,12 @@ var Player = function() {
 
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/char-horn-girl.png';
+
+    // starting position
+    // NOTE: Canvas is 505 x 606 px. Blocks are 101 x 171 px.
+    this.x = 100;
+    this.y = 100;
 };
 
 // Update the player's position, required method for game
