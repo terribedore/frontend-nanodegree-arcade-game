@@ -85,7 +85,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [new Enemy()];
+var allEnemies = [new Enemy(-115, 60), new Enemy(-220, 145), new Enemy(-325, 230)];
 
 var player = new Player();
 
