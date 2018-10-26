@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     // The image/sprite for our enemies, 'this' uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -8,6 +8,7 @@ var Enemy = function(x, y) {
     // 'x' allows them to creep on the screen vs. teleporting!
     this.x = x; // NB: bugs, first to last appearance: -115, -220, -270.
     this.y = y;  // NB: bugs, bottom to top: 230, 145, 60.
+    this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
@@ -15,11 +16,18 @@ var Enemy = function(x, y) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.
-    this.x += 0.5; // rate of speed. 0.5 is a slower speed for testing.
-    if (this.x > 500) {
-     this.x = -115; // a negative number simulates a creep vs teleporting movement.
-   }
+    // all computers. 
+    this.x += this.speed * dt;
+
+    if (this.x > 510) {
+      console.log('snails move faster!');
+      this.x = -50;
+      this.speed = 100 + Math.floor(Math.random() * 222);
+    };
+    //this.x += 0.5; // rate of speed. 0.5 is a slower speed for testing.
+    //if (this.x > 500) {
+     //this.x = -115; // a negative number simulates a creep vs teleporting movement.
+   //}
 };
 
 // Draw the enemy on the screen, required method for game
@@ -111,7 +119,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [new Enemy(-115, 60), new Enemy(-220, 145), new Enemy(-325, 230)];
+var allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
 //var allEnemies = [new Enemy()];
 
 var player = new Player();
