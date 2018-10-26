@@ -85,16 +85,16 @@ Player.prototype.handleInput = function(keyPress) {
     // if player collides with an enemy,
     // player is sent back to starting position
     for(let enemy of allEnemies) {
-      if(enemy.x < this.x + 80 &&
-          enemy.x + 80 > this.x &&
-          enemy.y < this.y + 60 &&
-          60 + enemy.y > this.y) {
+      if(enemy.x < this.x + 80 && // if enemy location is LESS than player's position (within 80px)
+          enemy.x + 80 > this.x && // if enemy location (within 80px) is GREATER than player's position
+          enemy.y < this.y + 80 && // if enemy location is LESS than player's position (within 60px)
+          enemy.y  + 80 > this.y) { // if enemy location (within 60px) is GREATER than player's position
           this.x = 202;
           this.y = 405;
-      };
+      }; // BUG: this works if I'm moving, BUT if I stay staionary, the bug passes right over me...
     }
 
-    // if player reaches water row without collision, they win! and
+    // if player reaches water row (y = 0) without collision, they win! and
     // player is sent back to starting position after t seconds
     if(this.y < 0) {
       // OPTIMIZE: disable 'keyPress' in future refactoring so
