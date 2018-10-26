@@ -4,30 +4,27 @@ var Enemy = function(x, y, speed) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
-    // starting position. A negative starting number at
+    // starting position and speed. A negative starting number at
     // 'x' allows them to creep on the screen vs. teleporting!
-    this.x = x; // NB: bugs, first to last appearance: -115, -220, -270.
-    this.y = y;  // NB: bugs, bottom to top: 230, 145, 60.
+    this.x = x;
+    this.y = y;
     this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+// Parameter: dt, a time delta between ticks.
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers. 
+    // multiply any movement by the dt parameter which will ensure
+    // the game runs at the same speed for all computers.
     this.x += this.speed * dt;
 
+    // if enemy is rendering outside the canvas,
+    // reset their location and their speed
     if (this.x > 510) {
       console.log('snails move faster!');
       this.x = -50;
       this.speed = 100 + Math.floor(Math.random() * 222);
     };
-    //this.x += 0.5; // rate of speed. 0.5 is a slower speed for testing.
-    //if (this.x > 500) {
-     //this.x = -115; // a negative number simulates a creep vs teleporting movement.
-   //}
 };
 
 // Draw the enemy on the screen, required method for game
@@ -35,13 +32,8 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Our player!
 var Player = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-horn-girl.png';
@@ -52,11 +44,8 @@ var Player = function() {
 };
 
 // Update the player's position, required method for game
-// Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+
 };
 
 // Draw the player on the screen, required method for game
@@ -66,24 +55,24 @@ Player.prototype.render = function() {
 
 // player movement via key presses.
 Player.prototype.handleInput = function(keyPress) {
-    // player moves left 1 tile (102 px) for each 'left' key press.
+    // player moves left 1 tile (102px) for each 'left' key press.
     // the && Operator keeps the player on the canvas.
     if(keyPress == 'left' && this.x > 0) {
       this.x -= 102;
     };
 
-    // player moves up 1 tile (83 px) for each 'up' key press.
+    // player moves up 1 tile (83px) for each 'up' key press.
     // the && Operator keeps the player on the canvas.
     if(keyPress == 'up' && this.y > 0) {
       this.y -= 83;
     };
-    // player moves right 1 tile (102 px) for each 'right' key press.
+    // player moves right 1 tile (102px) for each 'right' key press.
     // the && Operator keeps the player on the canvas.
     if(keyPress == 'right' && this.x < 405) {
       this.x += 102;
     };
 
-    // player moves down 1 tile (102 px) for each 'down' key press.
+    // player moves down 1 tile (102px) for each 'down' key press.
     // the && Operator keeps the player on the canvas.
     // NOTE: You'd think the && Operator is 405, but you'd be wrong!
     if(keyPress == 'down' && this.y < 388) {
@@ -93,35 +82,43 @@ Player.prototype.handleInput = function(keyPress) {
     // if player collides with an enemy,
     // player is sent back to starting position
     for(let enemy of allEnemies) {
-      if(enemy.x < this.x + 80 && // if enemy location is LESS than player's position (within 80px)
-          enemy.x + 80 > this.x && // if enemy location (within 80px) is GREATER than player's position
-          enemy.y < this.y + 80 && // if enemy location is LESS than player's position (within 60px)
-          enemy.y  + 80 > this.y) { // if enemy location (within 60px) is GREATER than player's position
-          this.x = 202;
-          this.y = 405;
+      // if enemy position is LESS than player's position (within 80px) AND
+      if(enemy.x < this.x + 80 &&
+        // if enemy position (within 80px) is GREATER than player's position
+        enemy.x + 80 > this.x &&
+        // if enemy position is LESS than player's position (within 60px)
+        enemy.y < this.y + 80 &&
+        // if enemy position (within 60px) is GREATER than player's position
+        enemy.y  + 80 > this.y) {
+
+        // then reset player to starting position
+        this.x = 202;
+        this.y = 388;
       }; // BUG: this works if I'm moving, BUT if I stay staionary, the bug passes right over me...
     }
 
-    // if player reaches water row (y = 0) without collision, they win! and
-    // player is sent back to starting position after t seconds
+    // if player reaches water row (0 on y axis) without collision,
+    // they WIN!
+    // and player is sent back to starting position after t seconds
     if(this.y < 0) {
       // OPTIMIZE: disable 'keyPress' in future refactoring so
       // player can't be moved after winning. (short timout for now)
       // IDEA: add a 'win' and 'gotcha' function. use if/else to
       // trigger win = star and reset while gotcha = rock and reset.
       setTimeout(() => {
+
+        // reset player to starting position
         this.x = 202;
         this.y = 388;
       }, 500); // 500 = miliseconds = 0.5 seconds
     };
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
-//var allEnemies = [new Enemy()];
 
+// Place all enemy objects in an array called allEnemies
+var allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
+
+// Place the player object in a variable called player
 var player = new Player();
 
 // This listens for key presses and sends the keys to your
