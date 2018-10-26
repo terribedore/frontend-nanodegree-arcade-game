@@ -94,7 +94,7 @@ Player.prototype.handleInput = function(keyPress) {
         // then reset player to starting position
         this.x = 202;
         this.y = 388;
-      }; // BUG: this works if I'm moving, BUT if I stay staionary, the bug passes right over me...
+      };
     }
 
     // if player reaches water row (0 on y axis) without collision,
