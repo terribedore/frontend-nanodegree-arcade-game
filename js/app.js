@@ -77,12 +77,24 @@ Player.prototype.handleInput = function(keyPress) {
 
     // player moves down 1 tile (102 px) for each 'down' key press.
     // the && Operator keeps the player on the canvas.
-    // You'd think the && Operator is 405, but you'd be wrong!
+    // NOTE: You'd think the && Operator is 405, but you'd be wrong!
     if(keyPress == 'down' && this.y < 388) {
       this.y += 83;
     };
 
-    // if player wins / reaches water row without collision,
+    // if player collides with an enemy,
+    // player is sent back to starting position
+    for(let enemy of allEnemies) {
+      if(enemy.x < this.x + 80 &&
+          enemy.x + 80 > this.x &&
+          enemy.y < this.y + 60 &&
+          60 + enemy.y > this.y) {
+          this.x = 202;
+          this.y = 405;
+      };
+    }
+
+    // if player reaches water row without collision, they win! and
     // player is sent back to starting position after t seconds
     if(this.y < 0) {
       // OPTIMIZE: disable 'keyPress' in future refactoring so
@@ -100,6 +112,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(-115, 60), new Enemy(-220, 145), new Enemy(-325, 230)];
+//var allEnemies = [new Enemy()];
 
 var player = new Player();
 
