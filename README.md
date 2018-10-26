@@ -31,6 +31,8 @@ personal website.
 * Make it to the top row to **win**!
   * **Be sure to avoid those bugs!**
 
+![alt text](https://github.com/terribedore/frontend-nanodegree-arcade-game/blob/master/images/screenshot.png "sprite player at starting position with enemy bugs")
+
 
 ## Contributing
 This repository is meant to remain "frozen" for future reflection. Any refactoring will be done at a future time and will be forked then renamed. The link to that forked project, will then be shown here.
