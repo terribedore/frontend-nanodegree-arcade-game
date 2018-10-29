@@ -50,7 +50,21 @@ var Player = function(x, y) {
 
 // Update the player's position, required method for game
 Player.prototype.update = function(dt) {
-
+    // if player collides with an enemy, player is sent back to starting position using axis-aligned bounding box logic
+    for(let enemy of allEnemies) {
+      // if enemy position is LESS than player's position (within 80px) AND
+      if(enemy.x < this.x + 80 &&
+      // if enemy position (within 80px) is GREATER than player's position
+      enemy.x + 80 > this.x &&
+      // if enemy position is LESS than player's position (within 60px)
+      enemy.y < this.y + 60 &&
+      // if enemy position (within 60px) is GREATER than player's position
+      60 + enemy.y > this.y) {
+        // then reset player to starting position
+        this.x = 202;
+        this.y = 405;
+      };
+    };
 };
 
 // Draw the player on the screen, required method for game
@@ -71,6 +85,7 @@ Player.prototype.handleInput = function(keyPress) {
     if(keyPress == 'up' && this.y > 0) {
       this.y -= 83;
     };
+
     // player moves right 1 tile (102px) for each 'right' key press.
     // the && Operator keeps the player on the canvas.
     if(keyPress == 'right' && this.x < 405) {
@@ -84,24 +99,6 @@ Player.prototype.handleInput = function(keyPress) {
       this.y += 83;
     };
 
-    // if player collides with an enemy,
-    // player is sent back to starting position
-    for(let enemy of allEnemies) {
-      // if enemy position is LESS than player's position (within 80px) AND
-      if(enemy.x < this.x + 80 &&
-        // if enemy position (within 80px) is GREATER than player's position
-        enemy.x + 80 > this.x &&
-        // if enemy position is LESS than player's position (within 60px)
-        enemy.y < this.y + 80 &&
-        // if enemy position (within 60px) is GREATER than player's position
-        enemy.y  + 80 > this.y) {
-
-        // then reset player to starting position
-        this.x = 202;
-        this.y = 388;
-      };
-    }
-
     // if player reaches water row (0 on y axis) without collision,
     // they WIN!
     // and player is sent back to starting position after t seconds
@@ -114,16 +111,19 @@ Player.prototype.handleInput = function(keyPress) {
 
         // reset player to starting position
         this.x = 202;
-        this.y = 388;
+        this.y = 405;
       }, 500); // 500 = miliseconds = 0.5 seconds
     };
 };
 
 
 // Place all enemy objects in an array called allEnemies
+// x should be a negative number for creep vs teleporting effect.
+// starting speed is 100 and randomized above after initial pass across.
 const allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
 
-// Place the player object in a variable called player
+// Place the player object in a variable called player.
+// starting position is x = 202 and y = 405.
 const player = new Player(202, 405);
 
 // This listens for key presses and sends the keys to your
