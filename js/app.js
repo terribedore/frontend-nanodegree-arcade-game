@@ -1,7 +1,10 @@
 'use strict';
 
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+let Enemy = function(x, y, speed) { // NOTE: this was given as starter code
+// and used to be 'var', but according to js style guide, we aren't supposed
+// to use anymore:
+// http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#var.
     // The image/sprite for our enemies, 'this' uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -35,14 +38,14 @@ Enemy.prototype.render = function() {
 };
 
 // Our player!
-var Player = function() {
+var Player = function(x, y) {
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-horn-girl.png';
 
     // starting position
-    this.x = 202;
-    this.y = 388;
+    this.x = x;
+    this.y = y;
 };
 
 // Update the player's position, required method for game
@@ -118,10 +121,10 @@ Player.prototype.handleInput = function(keyPress) {
 
 
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
+const allEnemies = [new Enemy(-115, 60, 100), new Enemy(-220, 145, 100), new Enemy(-325, 230, 100)];
 
 // Place the player object in a variable called player
-var player = new Player();
+const player = new Player(202, 405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
